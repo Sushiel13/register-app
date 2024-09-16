@@ -1,5 +1,5 @@
 pipeline {
-          agent { label 'jenkins-agent' }
+          agent any
                   tools {
                           jdk 'Java17'
                             maven 'Maven3'
@@ -31,8 +31,10 @@ pipeline {
            steps {
 	           script {
 		        withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') { 
-                        sh "mvn sonar:Mh37f8800@washim"
-          }
- }
-           }                    
-  }
+                        sh "mvn sonar:sonar"
+      }
+                }
+            }
+        }
+    }
+}
